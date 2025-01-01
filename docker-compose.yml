@@ -22,6 +22,8 @@ services:
       - "3000:3000"
     volumes:
       - ./grafana:/var/lib/grafana
+    environment:
+      - GF_SERVER_ROOT_URL=https://smunity.co.kr/grafana
     depends_on:
       - prometheus
 
