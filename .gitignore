@@ -73,3 +73,5 @@ Temporary Items
 grafana
 .env
 ngrinder/controller
+*.jar
+pinpoint-agent
