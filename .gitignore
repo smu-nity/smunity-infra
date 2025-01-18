@@ -72,6 +72,6 @@ Temporary Items
 
 grafana
 .env
-ngrinder/controller
+load-test/ngrinder/controller
 *.jar
 pinpoint-agent
