@@ -22,10 +22,6 @@
 
 ## 🛠️ Tech Stack
 
-- #### NoSQL
-
-  <img src="https://img.shields.io/badge/Redis-FF4438?style=round-square&logo=redis&logoColor=white"/>
-
 - #### Monitoring
 
   <img src="https://img.shields.io/badge/Prometheus-E6522C?style=round-square&logo=prometheus&logoColor=white"/>
