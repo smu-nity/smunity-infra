@@ -75,3 +75,4 @@ grafana
 load-test/ngrinder/controller
 *.jar
 pinpoint-agent
+*.pyc
