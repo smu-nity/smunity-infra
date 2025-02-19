@@ -6,16 +6,17 @@ services:
     ports:
       - "3200:3000"
     environment:
-      DATABASE_URL: postgresql://umami:umami@db:5432/umami
+      DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
       DATABASE_TYPE: postgresql
       APP_SECRET: replace-me-with-a-random-string
+      BASE_PATH: ${BASE_PATH}
     depends_on:
       db:
         condition: service_healthy
     init: true
     restart: always
     healthcheck:
-      test: ["CMD-SHELL", "curl http://localhost:3000/api/heartbeat"]
+      test: ["CMD-SHELL", "curl http://localhost:3200/api/heartbeat"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -23,9 +24,9 @@ services:
   db:
     image: postgres:15-alpine
     environment:
-      POSTGRES_DB: umami
-      POSTGRES_USER: umami
-      POSTGRES_PASSWORD: umami
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     volumes:
       - umami-db-data:/var/lib/postgresql/data
     restart: always
