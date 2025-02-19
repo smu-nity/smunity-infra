@@ -20,11 +20,6 @@ services:
     depends_on:
       umami-db:
         condition: service_healthy
-    deploy:
-      resources:
-        limits:
-          memory: 4G
-          cpus: "1"
 
   umami-db:
     image: postgres:15-alpine
