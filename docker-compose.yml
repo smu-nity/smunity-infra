@@ -1,23 +1,23 @@
-version: "3"
-
 services:
   prometheus:
     image: prom/prometheus:latest
     container_name: prometheus
     ports:
-      - "9090:9090"
+      - 9090:9090
     volumes:
       - ./prometheus/prometheus.yml.template:/prometheus/prometheus.yml.template
       - ./prometheus/entrypoint.sh:/entrypoint.sh
     environment:
       - TARGET_HOST=${TARGET_HOST}
-    entrypoint: ["/bin/sh", "/entrypoint.sh"]
+    entrypoint:
+      - /bin/sh
+      - /entrypoint.sh
 
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
     ports:
-      - "3000:3000"
+      - 3000:3000
     volumes:
       - ./grafana:/var/lib/grafana
     environment:
@@ -28,5 +28,5 @@ services:
   loki:
     image: grafana/loki:latest
     ports:
-      - "3100:3100"
+      - 3100:3100
     command: -config.file=/etc/loki/local-config.yaml
