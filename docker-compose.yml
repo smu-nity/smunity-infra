@@ -7,7 +7,11 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/prometheus.yml.template:/prometheus/prometheus.yml.template
+      - ./prometheus/entrypoint.sh:/entrypoint.sh
+    environment:
+      - TARGET_HOST=${TARGET_HOST}
+    entrypoint: ["/bin/sh", "/entrypoint.sh"]
 
   grafana:
     image: grafana/grafana:latest
