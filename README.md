@@ -10,17 +10,17 @@
 
 ## 🐳 Quick Start with Docker
 
-#### 1. Set Environment Variables
+1. #### Set Environment Variables
 
-```bash
-cp .env.example .env
-```
+   ```bash
+   cp .env.example .env
+   ```
 
-#### 2. Start the Containers
+2. #### Start the Containers
 
-```bash
-docker compose up -d
-```
+   ```bash
+   docker compose up -d
+   ```
 
 ## 🖥️ Github Repository
 
