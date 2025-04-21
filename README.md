@@ -12,13 +12,13 @@
 
 1. #### Set Environment Variables
 
-   ```bash
+   ```sh
    cp .env.example .env
    ```
 
 2. #### Start the Containers
 
-   ```bash
+   ```sh
    docker compose up -d
    ```
 
