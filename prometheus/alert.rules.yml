@@ -1,0 +1,29 @@
+groups:
+  - name: system-alerts
+    rules:
+      - alert: HighCPUUsage
+        expr: 100 - (avg by(instance) (rate(node_cpu_seconds_total{mode="idle"}[5m])) * 100) > 80
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "CPU 사용률 경고"
+          description: "인스턴스 {{ $labels.instance }} CPU 사용률이 80%를 초과했습니다."
+
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes * 100 > 90
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Memory 사용률 경고"
+          description: "인스턴스 {{ $labels.instance }} Memory 사용률이 90%를 초과했습니다."
+
+      - alert: HighDiskUsage
+        expr: node_filesystem_avail_bytes / node_filesystem_size_bytes * 100 < 10
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Disk 사용률 경고"
+          description: "인스턴스 {{ $labels.instance }} 디스크 사용률이 90%를 초과했습니다."
