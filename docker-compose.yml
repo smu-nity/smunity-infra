@@ -7,8 +7,23 @@ services:
     volumes:
       - ./prometheus/prometheus.yml.template:/prometheus/prometheus.yml.template
       - ./prometheus/entrypoint.sh:/entrypoint.sh
+      - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
     environment:
       - TARGET_HOST=${TARGET_HOST}
+    entrypoint:
+      - /bin/sh
+      - /entrypoint.sh
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    container_name: alertmanager
+    ports:
+      - 9093:9093
+    environment:
+      - SLACK_WEBHOOK=${SLACK_WEBHOOK}
+    volumes:
+      - ./alertmanager/alertmanager.yml.template:/etc/alertmanager/alertmanager.yml.template
+      - ./alertmanager/entrypoint.sh:/entrypoint.sh
     entrypoint:
       - /bin/sh
       - /entrypoint.sh

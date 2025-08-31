@@ -6,3 +6,12 @@ scrape_configs:
       - targets: ["${TARGET_HOST}"]
         labels:
           application: "smunity"
+
+rule_files:
+  - "/etc/prometheus/alert.rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+            - "alertmanager:9093"
