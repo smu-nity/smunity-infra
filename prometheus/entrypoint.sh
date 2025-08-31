@@ -6,4 +6,4 @@ sed "s|\${TARGET_HOST}|${TARGET_HOST}|g" \
     > /prometheus/prometheus.yml
 
 # Prometheus 실행
-exec /bin/prometheus "$@"
+exec /bin/prometheus
