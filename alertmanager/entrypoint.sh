@@ -1,9 +1,9 @@
 #!/bin/sh
 
-# 환경변수를 sed로 치환해서 config.yml 생성
+# 환경변수를 sed로 치환해서 alertmanager.yml 생성
 sed "s|\${SLACK_WEBHOOK}|${SLACK_WEBHOOK}|g" \
-    /etc/alertmanager/config.yml.template \
-    > /etc/alertmanager/config.yml
+    /etc/alertmanager/alertmanager.yml.template \
+    > /etc/alertmanager/alertmanager.yml
 
 # Alertmanager 실행
-exec /bin/alertmanager --config.file=/etc/alertmanager/config.yml
+exec /bin/alertmanager --config.file=/etc/alertmanager/alertmanager.yml

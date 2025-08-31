@@ -22,7 +22,7 @@ services:
     environment:
       - SLACK_WEBHOOK=${SLACK_WEBHOOK}
     volumes:
-      - ./alertmanager/config.yml.template:/etc/alertmanager/config.yml.template
+      - ./alertmanager/alertmanager.yml.template:/etc/alertmanager/alertmanager.yml.template
       - ./alertmanager/entrypoint.sh:/entrypoint.sh
     entrypoint:
       - /bin/sh
