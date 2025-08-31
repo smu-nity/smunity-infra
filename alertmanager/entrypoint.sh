@@ -6,4 +6,4 @@ sed "s|\${SLACK_WEBHOOK}|${SLACK_WEBHOOK}|g" \
     > /etc/alertmanager/config.yml
 
 # Alertmanager 실행
-exec /bin/alertmanager "$@"
+exec /bin/alertmanager --config.file=/etc/alertmanager/config.yml

@@ -23,7 +23,7 @@ services:
       - SLACK_WEBHOOK=${SLACK_WEBHOOK}
     volumes:
       - ./alertmanager/config.yml.template:/etc/alertmanager/config.yml.template
-      - ./alertmanager/alertmanager-entrypoint.sh:/entrypoint.sh
+      - ./alertmanager/entrypoint.sh:/entrypoint.sh
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
