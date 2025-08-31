@@ -10,3 +10,8 @@ receivers:
       - api_url: "${SLACK_WEBHOOK}"
         channel: "#smunity"
         send_resolved: true
+        text: |-
+          {{ range .Alerts }}
+          • *요약*: {{ .Annotations.summary }}
+          • *설명*: {{ .Annotations.description }}
+          {{ end }}
