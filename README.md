@@ -38,9 +38,9 @@
 
 - #### Grafana Stack
 
-  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=round-square&logo=prometheus&logoColor=white"/>
-  <img src="http://is.am/63da"/>
   <img src="https://img.shields.io/badge/Grafana-F46800?style=round-square&logo=grafana&logoColor=white"/>
+  <img src="http://is.am/63da"/>
+  <img src="https://img.shields.io/badge/Prometheus-E6522C?style=round-square&logo=prometheus&logoColor=white"/>
 
 - #### DevOps
 
