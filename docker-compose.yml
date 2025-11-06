@@ -9,7 +9,7 @@ services:
       - ./prometheus/entrypoint.sh:/entrypoint.sh
       - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
     ports:
-      - 9090:9090
+      - "9090:9090"
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
@@ -24,7 +24,7 @@ services:
       - ./alertmanager/alertmanager.yml.template:/etc/alertmanager/alertmanager.yml.template
       - ./alertmanager/entrypoint.sh:/entrypoint.sh
     ports:
-      - 9093:9093
+      - "9093:9093"
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
@@ -40,7 +40,7 @@ services:
     volumes:
       - ./grafana:/var/lib/grafana
     ports:
-      - 3000:3000
+      - "3000:3000"
     depends_on:
       - prometheus
     restart: always
@@ -50,5 +50,5 @@ services:
     image: grafana/loki:latest
     command: -config.file=/etc/loki/local-config.yaml
     ports:
-      - 3100:3100
+      - "3100:3100"
     restart: always
