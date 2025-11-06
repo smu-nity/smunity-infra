@@ -27,9 +27,20 @@ services:
     ports:
       - "9093:9093"
     networks: [ smunity ]
+    depends_on:
+      - prometheus
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
+    restart: always
+
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+    networks: [ smunity ]
     restart: always
 
   grafana:
@@ -46,15 +57,7 @@ services:
     networks: [ smunity ]
     depends_on:
       - prometheus
-    restart: always
-
-  loki:
-    container_name: loki
-    image: grafana/loki:latest
-    command: -config.file=/etc/loki/local-config.yaml
-    ports:
-      - "3100:3100"
-    networks: [ smunity ]
+      - loki
     restart: always
 
 volumes:
