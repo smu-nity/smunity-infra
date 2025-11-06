@@ -13,6 +13,7 @@ services:
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
+    networks: [ smunity ]
     restart: always
 
   alertmanager:
@@ -28,6 +29,7 @@ services:
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
+    networks: [ smunity ]
     restart: always
 
   grafana:
@@ -43,6 +45,7 @@ services:
       - "3000:3000"
     depends_on:
       - prometheus
+    networks: [ smunity ]
     restart: always
 
   loki:
@@ -51,7 +54,12 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     ports:
       - "3100:3100"
+    networks: [ smunity ]
     restart: always
 
 volumes:
   grafana-data:
+
+networks:
+  smunity:
+    external: true
