@@ -10,17 +10,9 @@
 
 ## 🐳 Quick Start with Docker
 
-1. #### Set Environment Variables
-
-   ```bash
-   cp .env.example .env
-   ```
-
-2. #### Start the Containers
-
-   ```bash
-   docker compose up -d
-   ```
+```bash
+docker compose up -d
+```
 
 ## 🖥️ Github Repository
 
@@ -46,4 +38,10 @@
 
   <img src="https://img.shields.io/badge/Git-F05032?style=round-square&logo=Git&logoColor=white"/>
   <img src="https://img.shields.io/badge/GitHub-181717?style=round-square&logo=github&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Docker-2496ED?style=round-square&logo=docker&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GitHub%20Actions-2088FF?style=round-square&logo=githubactions&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=round-square&logo=Docker&logoColor=white"/>
+
+- #### Cloud
+
+  <img src="http://is.am/63dc"/>
+  <img src="http://is.am/63db"/>
