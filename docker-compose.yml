@@ -3,7 +3,7 @@ services:
     container_name: prometheus
     image: prom/prometheus:latest
     environment:
-      - TARGET_HOST=${TARGET_HOST}
+      - TARGET_HOST=${TARGET_HOST:-host.docker.internal:8080}
     volumes:
       - ./prometheus/prometheus.yml.template:/prometheus/prometheus.yml.template
       - ./prometheus/entrypoint.sh:/entrypoint.sh
@@ -19,7 +19,7 @@ services:
     container_name: alertmanager
     image: prom/alertmanager:latest
     environment:
-      - SLACK_WEBHOOK=${SLACK_WEBHOOK}
+      - SLACK_WEBHOOK=${SLACK_WEBHOOK:-https://hooks.slack.com}
     volumes:
       - ./alertmanager/alertmanager.yml.template:/etc/alertmanager/alertmanager.yml.template
       - ./alertmanager/entrypoint.sh:/entrypoint.sh
@@ -34,7 +34,7 @@ services:
     container_name: grafana
     image: grafana/grafana:latest
     environment:
-      - GF_SERVER_ROOT_URL=${GF_SERVER_ROOT_URL}
+      - GF_SERVER_ROOT_URL=${GF_SERVER_ROOT_URL:-http://localhost:3000}
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     volumes:
