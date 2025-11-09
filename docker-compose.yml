@@ -10,6 +10,7 @@ services:
       - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
     ports:
       - "9090:9090"
+    networks: [ smunity ]
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
@@ -25,9 +26,21 @@ services:
       - ./alertmanager/entrypoint.sh:/entrypoint.sh
     ports:
       - "9093:9093"
+    networks: [ smunity ]
+    depends_on:
+      - prometheus
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
+    restart: always
+
+  loki:
+    container_name: loki
+    image: grafana/loki:latest
+    command: -config.file=/etc/loki/local-config.yaml
+    ports:
+      - "3100:3100"
+    networks: [ smunity ]
     restart: always
 
   grafana:
@@ -38,17 +51,18 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
     volumes:
-      - ./grafana:/var/lib/grafana
+      - grafana-data:/var/lib/grafana
     ports:
       - "3000:3000"
+    networks: [ smunity ]
     depends_on:
       - prometheus
+      - loki
     restart: always
 
-  loki:
-    container_name: loki
-    image: grafana/loki:latest
-    command: -config.file=/etc/loki/local-config.yaml
-    ports:
-      - "3100:3100"
-    restart: always
+volumes:
+  grafana-data:
+
+networks:
+  smunity:
+    external: true
