@@ -10,7 +10,6 @@ services:
       - ./prometheus/alert.rules.yml:/etc/prometheus/alert.rules.yml
     ports:
       - "9090:9090"
-    networks: [ smunity ]
     entrypoint:
       - /bin/sh
       - /entrypoint.sh
@@ -26,7 +25,6 @@ services:
       - ./alertmanager/entrypoint.sh:/entrypoint.sh
     ports:
       - "9093:9093"
-    networks: [ smunity ]
     depends_on:
       - prometheus
     entrypoint:
@@ -40,7 +38,6 @@ services:
     command: -config.file=/etc/loki/local-config.yaml
     ports:
       - "3100:3100"
-    networks: [ smunity ]
     restart: always
 
   grafana:
@@ -54,7 +51,6 @@ services:
       - grafana-data:/var/lib/grafana
     ports:
       - "3000:3000"
-    networks: [ smunity ]
     depends_on:
       - prometheus
       - loki
@@ -62,7 +58,3 @@ services:
 
 volumes:
   grafana-data:
-
-networks:
-  smunity:
-    external: true
