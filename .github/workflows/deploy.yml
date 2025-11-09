@@ -3,7 +3,7 @@ name: SMUNITY Monitoring CI/CD Pipeline
 on:
   push:
     branches:
-      - feature/53
+      - main
   workflow_dispatch:
 
 permissions:
@@ -27,9 +27,9 @@ jobs:
           script: |
             set -Eeuo pipefail
             cd "${{ secrets.REMOTE_APP_DIR }}"
-            git fetch origin feature/53
-            git checkout -f feature/53
-            git reset --hard origin/feature/53
+            git fetch origin main
+            git checkout -f main
+            git reset --hard origin/main
             docker compose pull
             docker compose up -d --remove-orphans --pull always
             docker image prune -f
